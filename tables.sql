@@ -11,8 +11,8 @@ CREATE TABLE students (
 CREATE TABLE courses (
     course_id serial PRIMARY KEY,
     course_name VARCHAR(100),
-    instructor VARCHAR(100),
-    credits INT
+    credits INT,
+    instructor_id INT REFERENCES instructors(instructor_id)
 );
 
 -- Kayıt Tablosu
@@ -26,9 +26,17 @@ CREATE TABLE enrollments (
 -- Akademik Personel Tablosu
 CREATE TABLE faculty (
     faculty_id serial PRIMARY KEY,
+    faculty_name VARCHAR(100)
+);
+
+-- Akademik Personel Tablosu
+CREATE TABLE staff (
+    staff_id serial PRIMARY KEY,
+    faculty_id INT REFERENCES faculty(faculty_id),
+    cid VARCHAR(11),
     first_name VARCHAR(50),
     last_name VARCHAR(50),
-    title VARCHAR(100)
+    email VARCHAR(100),
 );
 
 -- Bölüm Tablosu
